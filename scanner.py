@@ -2,6 +2,7 @@
 import sys
 import socket
 from datetime import datetime
+from colorama import Fore, Back
 # print("hello git test")
 
 #Define Target
@@ -25,9 +26,9 @@ try:
         s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         socket.setdefaulttimeout(1)
         result = s.connect_ex((target,port)) #returns an error indicator
+        print(f"Scanning port {port}")
         if result == 0:
-            print(f"Port {port} is open")
-        
+            print(Fore.RED + f"Port {port} is open" + Fore.RESET)
         s.close()
 
 except KeyboardInterrupt:
